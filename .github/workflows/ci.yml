@@ -1,0 +1,23 @@
+name: ci
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Hygiene — no private imports / secrets
+        run: |
+          ! grep -rnE "import (app|core|server|modules)\b|dtl_registry|jarvi3" elementgate/ || (echo "private import" && exit 1)
+          ! grep -rniE "api[_-]?key|secret|password|ANTHROPIC" elementgate/ || (echo "secret" && exit 1)
+      - name: Tests
+        run: python -m unittest discover -s tests -q
+      - name: Demo runs
+        run: python -m elementgate --demo

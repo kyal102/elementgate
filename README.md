@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/logo.png" alt="ElementGate" width="140"></p>
+
 # ElementGate
 
 **A deterministic chemistry validator.** Paste a chemical formula or a reaction

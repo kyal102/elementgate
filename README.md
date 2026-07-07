@@ -2,6 +2,8 @@
 
 # ElementGate
 
+[![CI](https://github.com/kyal102/elementgate/actions/workflows/ci.yml/badge.svg)](https://github.com/kyal102/elementgate/actions/workflows/ci.yml) ![license](https://img.shields.io/badge/license-MIT-green)
+
 **A deterministic chemistry validator.** Paste a chemical formula or a reaction
 — ElementGate parses it, computes the molar mass, and tells you whether the
 reaction conserves atoms *and* charge. No model, no network, no dependencies.
